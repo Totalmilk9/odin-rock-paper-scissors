@@ -16,23 +16,23 @@ const playRound = (computerSelection, playerSelection) => {
 
     computerSelection = computerPlay();
     playerSelection = prompt('Please enter rock, paper, or scissors.').toLowerCase();
-
+// Without adding the "&&" it would log the score in a non intended way
     if (computerSelection === gameChoices[0] && playerSelection === gameChoices[1]) {
-        return `${playerScore++}You win! Paper covers rock!`;
+        return `${playerScore++}` && console.log('You win! Paper covers rock!');
     } else if (computerSelection === gameChoices[0] && playerSelection === gameChoices[2]) {
-        return `${computerScore++}You lose! Rock crushes paper!`;
+        return `${computerScore++}` && console.log('You lose! Rock crushes paper!');
     } else if (computerSelection === gameChoices[1] && playerSelection === gameChoices[0]) {
-        return `${computerScore++}You lose! Paper covers rock!`;
+        return `${computerScore++}` && console.log('You lose! Paper covers rock!');
     } else if (computerSelection === gameChoices[1] && playerSelection === gameChoices[2]) {
-        return `${playerScore++}You win! Scissors cut paper!`;
+        return `${playerScore++}` && console.log('You win! Scissors cut paper!');
     } else if (computerSelection === gameChoices[2] && playerSelection === gameChoices[0]) {
-        return `${playerScore++}You win! Rock crushes scissors!`;
+        return `${playerScore++}` && console.log('You win! Rock crushes scissors!');
     } else if (computerSelection === gameChoices[2] && playerSelection === gameChoices[1]) {
-        return `${computerScore++}You lose! Scissors cut paper!`;
+        return `${computerScore++}` && console.log('You lose! Scissors cut paper!');
     } else if (computerSelection === playerSelection) {
-        return 'Tie game!';
+        console.log('Tie game!');
     } else {
-        return 'Please enter a valid selection';
+        console.log('Please enter a valid selection');
     }
 };
 
@@ -42,8 +42,7 @@ const game = () => {
 
         playRound()
 
-        console.log(`Your score is ${playerScore}.`);
-        console.log(`The computer's score is ${computerScore}.`);
+        console.log(`The score is ${playerScore} - ${computerScore}.`);
     }
 // Logs the winner of the whole game
     if (playerScore > computerScore) {
